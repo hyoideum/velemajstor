@@ -11,14 +11,22 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
 
-Route::get('/search', 'JobController@search')->name('search');
-
 Route::get('/jobs', 'JobController@index')->name('jobs');
 
-Route::get('/job/{id}', 'jobController@show')->name('show_job');
+Route::get('/search', 'JobController@search')->name('search');
+
+Route::get('/job/{id}', 'JobController@show')->name('show_job');
+
+Route::get('/post_job', 'JobController@show_job_form')->name('post_job');
+Route::post('/post_job', 'JobController@create');
+
+Route::get('/edit_job/{id}', 'JobController@edit')->name('edit_job');
+Route::post('/edit_job/{id}', 'JobController@update');
+
+Route::get('/delete_job/{id}', 'JobController@delete')->name('delete_job');
