@@ -4532,3 +4532,7 @@ ul.social li a:hover, ul.social li a:active, ul.social li a:focus {
 .navbar .navbar-nav .nav-link .icon{
   font-size: 20px;
 }
+
+.login {
+  color: white;
+}

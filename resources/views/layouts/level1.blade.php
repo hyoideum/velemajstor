@@ -109,8 +109,8 @@
                             </li>
                     </ul>
                 </div>
-                <div class="user-panel">
-                    @else
+                @else
+                    <div class="user-panel">
                         <a href="{{ route('login') }}" class="user-login-btn border-btn">
                             <i class="fa fa-user-o" aria-hidden="true"></i>Login
                         </a>
@@ -310,7 +310,7 @@
                 </div>
                 <div class="slide-navigation-wrap">
                     <div class="nav-item">
-                        <a href="dashboard-profile.html">
+                        <a href="{{ route('profile') }}">
                             <span class="menu-icon-wrap icon ti-user"></span>
                             <span class="menu-title">My Profile</span>
                         </a>
