@@ -23,10 +23,22 @@ Route::get('/search', 'JobController@search')->name('search');
 
 Route::get('/job/{id}', 'JobController@show')->name('show_job');
 
-Route::get('/post_job', 'JobController@show_job_form')->name('post_job');
-Route::post('/post_job', 'JobController@create');
-
 Route::get('/edit_job/{id}', 'JobController@edit')->name('edit_job');
 Route::post('/edit_job/{id}', 'JobController@update');
 
 Route::get('/delete_job/{id}', 'JobController@delete')->name('delete_job');
+
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/post_job', 'JobController@show_job_form')->name('post_job');
+    Route::post('/post_job', 'JobController@create');
+
+    Route::get('/profile', 'ProfileController@profile')->name('profile');
+
+    Route::get('/edit_profile', 'ProfileController@edit_profile')->name('/edit_profile');
+    Route::post('/update_profile', 'ProfileController@update_profile');
+
+    Route::get('/delete_profile', 'ProfileController@delete_profile')->name('delete_profile');
+
+});

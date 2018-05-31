@@ -10,7 +10,7 @@ class Category extends Model
         'name'
     ];
 
-    public function job_category() {
+    public function jobs() {
         return $this->hasMany('App\Job', 'category_id', 'id');
     }
 

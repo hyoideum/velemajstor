@@ -1,4 +1,4 @@
-@extends('layouts.majstor')
+@extends('layouts.level1')
 
 @section('content')
 <div class="page-container-wrap">
