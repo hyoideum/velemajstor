@@ -1,10 +1,3 @@
-var windowHeight = $(window).height();
-$('.main-header-section').css('height', windowHeight);
-
-var paddTop = (windowHeight - $('.header-content-block').height()) / 2;
-
-$('.main-header-section').css('paddingTop', paddTop)
-
 $(window).on('resize', function () {
     var windowHeight = $(window).height();
     $('.main-header-section').css('height', windowHeight);
@@ -20,16 +13,16 @@ jQuery(document).ready(function () {
     /*--------------------------------------------
     		Window Scroll Settings
 	---------------------------------------------*/
-    $(window).on('scroll', function (event) {
-        var scroll = $(window).scrollTop();
-        if (scroll >= 80) {
-            $(".main-nav-section").addClass("nav-affix");
-            $("#cbp-spmenu-s1").addClass("nav-affix");
-        } else {
-            $(".main-nav-section").removeClass("nav-affix");
-            $("#cbp-spmenu-s1").removeClass("nav-affix");
-        }
-    });
+    // $(window).on('scroll', function (event) {
+    //     var scroll = $(window).scrollTop();
+    //     if (scroll >= 80) {
+    //         $(".main-nav-section").addClass("nav-affix");
+    //         $("#cbp-spmenu-s1").addClass("nav-affix");
+    //     } else {
+    //         $(".main-nav-section").removeClass("nav-affix");
+    //         $("#cbp-spmenu-s1").removeClass("nav-affix");
+    //     }
+    // });
 
     /*--------------------------------------------
     		Responsive-menu Settings

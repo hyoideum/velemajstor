@@ -1,0 +1,37 @@
+.main-header-section {
+    padding: 220px 0 140px 0;
+    position: relative;
+    background: url(../images/bg2.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.navbar {
+    min-height: 80px;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    padding: 25px 0;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.33);
+}
+
+.cbp-spmenu {
+    background: rgba(0, 0, 0, 0.33);
+    position: fixed;
+    top: 94px;
+    height: 100%;
+    z-index: 999;
+    width: 240px;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+    -webkit-box-shadow: 11px 1px 22px -9px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 11px 1px 22px -9px rgba(0, 0, 0, 0.2);
+    box-shadow: 11px 1px 22px -9px rgba(0, 0, 0, 0.2);
+    -webkit-transition: 0.3s ease-in;
+    -o-transition: 0.3s ease-in;
+    transition: 0.3s ease-in;
+}

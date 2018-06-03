@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Job;
 use App\Location;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
     public function index(){
-       return Job::all();
+        $jobs = Job::all();
+
+       return view('jobs', compact('jobs'));
     }
 
     public function search(Request $request) {
