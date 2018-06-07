@@ -2,26 +2,11 @@
 
 @section('content')
 <div class="page-container-wrap">
-
-    {{--<h2>Jobs for category: {{ $jobs[0]->category()->first()->name }}, and location: {{ $jobs[0]->location()->first()->location_name }}</h2>--}}
-    {{--@foreach($jobs as $job)--}}
-        {{--<a href="{{ route('show_job', ['id' => $job->id]) }}">--}}
-            {{--<h4>{{ $job->title }}</h4>--}}
-            {{--<p>{{ $job->description }}</p>--}}
-        {{--</a>--}}
-    {{--@endforeach--}}
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="box-widget">
                     <div class="panel panel-default">
-                        {{--<div class="panel-heading">--}}
-                            {{----}}
-                            {{--<div class="panel-title">--}}
-                                {{--<h4>Traženi poslovi</h4>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
                         <div class="panel-body">
                             <div class="listing-reviews">
                                 @if($jobs->isEmpty())
@@ -53,10 +38,30 @@
                                                    {{ $job->description }}
                                                 </p>
                                             </div>
-                                            <a href="javascript:void(0)" class="replay-btn">
-                                                <i class="fa fa-reply" aria-hidden="true"></i> Replay
+
+                                            <div class="review-entry">
+                                                <p>
+                                                    Lokacija: {{ $job->location->location_name }}
+                                                </p>
+                                            </div>
+
+                                            <div class="review-entry">
+                                                <p>
+                                                    Kategorija: {{ $job->category->name }}
+                                                </p>
+                                            </div>
+
+                                            <a href="{{ route('show_job', ['id' => $job->id]) }}" class="replay-btn">
+                                                Detalji posla
                                             </a>
                                         </div>
+                                        @if(Auth::user()->hasRole('admin'))
+                                            @if(!$job->approved())
+                                            <a href="{{ route('approve_job', ['id' => $job->id]) }}" class="replay-btn">
+                                                Approve
+                                            </a>
+                                                @endif
+                                        @endauth
                                     </li>
                                         @endforeach
                                 </ul>

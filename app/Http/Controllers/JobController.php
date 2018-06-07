@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class JobController extends Controller
 {
     public function index(){
-        $jobs = Job::all();
+        $jobs = Job::where('approved', '=', true)->get();
 
        return view('jobs', compact('jobs'));
     }
@@ -28,6 +28,12 @@ class JobController extends Controller
         $job = Job::find($id);
 
         return view('job_details', compact('job'));
+    }
+
+    public function my_jobs($id) {
+        $jobs = Job::where('user_id', '=', $id)->get();
+
+        return view('my_jobs', compact('jobs'));
     }
 
     public function show_job_form() {
@@ -51,6 +57,8 @@ class JobController extends Controller
             'category_id' => $request['category'],
             'location_id' => $request['location']
         ]);
+
+        return redirect()->route('my_jobs', ['id' => $request['user_id']]);
     }
 
     public function edit($id) {
@@ -75,6 +83,6 @@ class JobController extends Controller
         $job = Job::find($id);
         $job->delete();
 
-        return redirect()->back();
+        return redirect()->home();
     }
 }

@@ -305,22 +305,38 @@
                     {{--</a>--}}
                 {{--</div>--}}
             {{--</div>--}}
-            {{--<div class="slide-navigation-wrap">--}}
-                {{--<div class="nav-item">--}}
-                    {{--<a href="dashboard-claim-refund.html">--}}
-                        {{--<span class="menu-icon-wrap icon ti-pencil-alt"></span>--}}
-                        {{--<span class="menu-title">Claim & Refund</span>--}}
-                    {{--</a>--}}
-                {{--</div>--}}
-            {{--</div>--}}
+
             <div class="slide-navigation-wrap">
                 <div class="nav-item">
-                    <a href="dashboard-settings.html">
-                        <span class="menu-icon-wrap icon ti-settings"></span>
+                    <a href="{{ route('jobs') }}">
+                        <span class="menu-icon-wrap icon ti-layers-alt"></span>
                         <span class="menu-title">Svi poslovi</span>
                     </a>
                 </div>
             </div>
+
+            @auth
+                @if(Auth::user()->hasRole('majstor'))
+                    <div class="slide-navigation-wrap">
+                        <div class="nav-item">
+                            <a href="{{ route('post_job') }}">
+                                <span class="menu-icon-wrap icon ti-pencil-alt"></span>
+                                <span class="menu-title">Postavi posao</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="slide-navigation-wrap">
+                        <div class="nav-item">
+                            <a href="{{ route('my_jobs', ['id' => Auth::user()->id]) }}">
+                                <span class="menu-icon-wrap icon ti-check-box"></span>
+                                <span class="menu-title">Moji poslovi</span>
+                            </a>
+                        </div>
+                    </div>
+                @endif
+            @endauth
+
             <div class="slide-navigation-wrap">
                 <div class="nav-item">
                     <a href="{{ route('profile') }}">
@@ -329,7 +345,6 @@
                     </a>
                 </div>
             </div>
-        </div>
     </nav>
 </div>
 
