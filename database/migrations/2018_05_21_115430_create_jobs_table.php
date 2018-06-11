@@ -20,6 +20,7 @@ class CreateJobsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('location_id');
+            $table->boolean('number')->default(true);
             $table->boolean('approved')->default(false);
             $table->timestamps();
         });

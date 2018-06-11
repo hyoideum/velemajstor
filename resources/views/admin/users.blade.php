@@ -23,11 +23,11 @@
                 </p>
                 <p>Role: {{ $user->role }}</p>
                     @if($user->active)
-                        <a href="{{route('deactivate_user', ['id' => $user->id]) }}">Deaktiviraj korisnika</a>
+                        <button><a href="{{route('deactivate_user', ['id' => $user->id]) }}">Deaktiviraj korisnika</a></button>
                     @else
-                        <a href="{{route('deactivate_user', ['id' => $user->id]) }}">Aktiviraj korisnika</a>
+                        <button><a href="{{route('deactivate_user', ['id' => $user->id]) }}">Aktiviraj korisnika</a></button>
                     @endif
-                <a href="{{ url()->previous() }}">Back</a>
+                <button><a href="{{ url()->previous() }}">Back</a></button>
             @endforeach
         </div>
     </div>

@@ -23,21 +23,26 @@ class ProfileController extends Controller
     }
 
     public function update_profile(Request $request) {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'nullable|regex:/(\+)[0-9]{11}/',
-            'role' =>'required'
-        ]);
 
         $user = User::find(Auth::user()->id);
+
+        //dd($user->id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+            'phone' => 'nullable|regex:/(\+)[0-9]{11}/',
+        ]);
+
+
 
         $user->name = request('name');
         $user->email = request('email');
         $user->phone = request('phone');
-        $user->role = \request('role');
 
         $user->save();
+
+        return redirect()->route('profile')->with('message', 'Uspješno ste uredili vaš profil');
     }
 
     public function delete_profile() {

@@ -46,7 +46,7 @@ class AdminController extends Controller
             'name' => $request['name']
         ]);
 
-        return redirect()->back()->with('message', 'Nova kategorija je dodana');
+        return redirect()->route('categories')->with('message', 'Nova kategorija je uspješno dodana');
     }
 
     public function users() {

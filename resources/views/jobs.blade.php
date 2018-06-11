@@ -9,6 +9,13 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="listing-reviews">
+
+                                @if(Session::has('message'))
+                                    <div class="alert alert-info">
+                                        {{ Session::get('message') }}
+                                    </div>
+                                @endif
+
                                 @if($jobs->isEmpty())
                                     <h4>Nažalost nema oglasa za posao za odabranu kategoriju i lokaciju</h4>
                                 @else
@@ -57,9 +64,12 @@
                                         </div>
                                         @auth
                                             @if(Auth::user()->hasRole('admin') && !$job->approved())
-                                                <a href="{{ route('approve_job', ['id' => $job->id]) }}" class="replay-btn">
-                                                    Approve
-                                                </a>
+                                                <button><a href="{{ route('approve_job', ['id' => $job->id]) }}" class="replay-btn">
+                                                    Prihvati posao
+                                                </a></button>
+                                                <button><a href="{{ route('delete_job', ['id' => $job->id]) }}" class="replay-btn">
+                                                        Izbriši posao
+                                                </a></button>
                                             @endif
                                         @endauth
                                     </li>

@@ -9,6 +9,13 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="listing-reviews">
+
+                                    @if(Session::has('message'))
+                                        <div class="alert alert-info">
+                                            {{ Session::get('message') }}
+                                        </div>
+                                    @endif
+
                                     @if($jobs->isEmpty())
                                         <h4>Još uvijek nemate objavljenih poslova</h4>
                                     @else
@@ -38,11 +45,30 @@
                                                                 {{ $job->description }}
                                                             </p>
                                                         </div>
-                                                        <a href="{{ route('show_job', ['id' => $job->id]) }}" class="replay-btn">
+
+                                                        <div class="review-entry">
+                                                            <p>
+                                                                Lokacija: {{ $job->location->location_name }}
+                                                            </p>
+                                                        </div>
+
+                                                        <div class="review-entry">
+                                                            <p>
+                                                                Kategorija: {{ $job->category->name }}
+                                                            </p>
+                                                        </div>
+
+                                                        <a href="{{ route('show_job', ['id' => $job->id]) }}"
+                                                           class="replay-btn">
                                                             Detalji posla
                                                         </a>
                                                     </div>
                                                 </li>
+                                            @if(!$job->approved)
+                                                <p>Posao je postavljen, ali mora biti odobren kako bi bio vidljiv ostalim korisnicima</p>
+                                            @endif
+                                                <button><a href="{{ route('edit_job', ['id' => $job->id]) }}">Uredi posao</a></button>
+                                                <button><a href="{{ route('delete_job', ['id' => $job->id]) }}">Izbriši posao</a></button>
                                             @endforeach
                                         </ul>
                                     @endif

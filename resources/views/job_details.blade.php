@@ -13,16 +13,22 @@
                             <p>Lokacija: {{ $job->location->location_name }}</p>
                             <p>Oglas postavio: {{ $job->user->name }}</p>
                             @auth
-                                <p>Broj telefona: {{ $job->user->phone }}</p>
+                                <p>Broj telefona:
+                                    @if($job->user->phone == null || !$job->number)
+                                        {{ '/' }}
+                                    @else
+                                        {{ $job->user->phone }}
+                                    @endif
+                                </p>
 
-                            @if(Auth::user()->id == $job->user->id)
-                                    <td><a href={{ route('edit_job', ['id' => $job->id]) }}>Edit</a></td>
-                                    <td><a href={{ route('delete_job',['id' => $job->id]) }}>Delete</a></td>
-                            @endif
+                                @if(Auth::user()->id == $job->user->id)
+                                    <button><a href={{ route('edit_job', ['id' => $job->id]) }}>Uredi posao</a></button>
+                                    <button><a href={{ route('delete_job',['id' => $job->id]) }}>Izbriši posao</a>
+                                    </button>
+                                @endif
                             @else
                                 <p>Samo registrirani korisnici mogu vidjeti broj telefona</p>
                             @endauth
-
                         </div>
                     </div>
                 </div>

@@ -148,9 +148,7 @@
                     </div>
                 </div>
             @endif
-        @endauth
 
-        @auth
             @if(Auth::user()->hasRole('admin'))
                 <div class="slide-navigation-wrap">
                     <div class="nav-item">
@@ -188,7 +186,6 @@
                     </div>
                 </div>
             @endif
-        @endauth
 
         <div class="slide-navigation-wrap">
             <div class="nav-item">
@@ -198,6 +195,7 @@
                 </a>
             </div>
         </div>
+        @endauth
     </nav>
 </div>
 <!-- side search end -->
