@@ -55,12 +55,12 @@
                                                 Detalji posla
                                             </a>
                                         </div>
-                                        @if(Auth::user()->hasRole('admin'))
-                                            @if(!$job->approved())
-                                            <a href="{{ route('approve_job', ['id' => $job->id]) }}" class="replay-btn">
-                                                Approve
-                                            </a>
-                                                @endif
+                                        @auth
+                                            @if(Auth::user()->hasRole('admin') && !$job->approved())
+                                                <a href="{{ route('approve_job', ['id' => $job->id]) }}" class="replay-btn">
+                                                    Approve
+                                                </a>
+                                            @endif
                                         @endauth
                                     </li>
                                         @endforeach

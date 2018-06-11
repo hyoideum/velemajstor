@@ -33,14 +33,14 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/profile', 'ProfileController@profile')->name('profile');
 
-    Route::get('/edit_profile', 'ProfileController@edit_profile')->name('/edit_profile');
+    Route::get('/edit_profile', 'ProfileController@edit_profile')->name('edit_profile');
     Route::post('/update_profile', 'ProfileController@update_profile');
 
     Route::get('/delete_profile', 'ProfileController@delete_profile')->name('delete_profile');
 
 });
 
-Route::middleware('role:admin')->group(function () {
+Route::middleware('role:majstor')->group(function () {
 
     Route::get('/post_job', 'JobController@show_job_form')->name('post_job');
     Route::post('/post_job', 'JobController@create');
@@ -51,3 +51,12 @@ Route::middleware('role:admin')->group(function () {
 
 Route::get('show_new_jobs', 'AdminController@show_new_jobs')->name('show_new_jobs');
 Route::get('approve_job/{id}', 'AdminController@approve_job')->name('approve_job');
+
+Route::get('categories', 'AdminController@categories')->name('categories');
+
+Route::get('/new_category', 'AdminController@new_category')->name('new_category');
+Route::post('/new_category', 'AdminController@add_category');
+
+Route::get('users', 'AdminController@users')->name('users');
+
+Route::get('deactivate_user/{id}', 'AdminController@deactivate_user')->name('deactivate_user');

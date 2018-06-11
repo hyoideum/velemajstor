@@ -6,11 +6,16 @@ use App\Category;
 use App\Job;
 use App\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
     public function index(){
-        $jobs = Job::where('approved', '=', true)->get();
+        if(!Auth::user()->hasRole('admin')) {
+            $jobs = Job::where('approved', '=', true)->get();
+        } else {
+            $jobs = Job::all();
+        }
 
        return view('jobs', compact('jobs'));
     }

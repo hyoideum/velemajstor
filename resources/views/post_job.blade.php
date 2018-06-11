@@ -8,10 +8,10 @@
 
                 <input type="hidden" name="user_id" value={{ Auth::user()->id }}>
             <label for="title">Naslov</label>
-                <input name="title">
+                <input type="text" name="title">
 
             <label for="description">Opis posla</label>
-                <input name="description">
+                <input type="text" name="description">
 
             <select name="category">Kategorija
                 @foreach($categories as $category)

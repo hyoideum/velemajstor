@@ -13,7 +13,7 @@ class ProfileController extends Controller
 
         $user = User::find($id);
 
-        return $user;
+        return view('profile', compact('user'));
     }
 
     public function edit_profile() {
@@ -22,11 +22,20 @@ class ProfileController extends Controller
         return view('edit_profile', compact('user'));
     }
 
-    public function update_profile() {
+    public function update_profile(Request $request) {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'nullable|regex:/(\+)[0-9]{11}/',
+            'role' =>'required'
+        ]);
+
         $user = User::find(Auth::user()->id);
 
         $user->name = request('name');
+        $user->email = request('email');
         $user->phone = request('phone');
+        $user->role = \request('role');
 
         $user->save();
     }

@@ -337,6 +337,46 @@
                 @endif
             @endauth
 
+            @auth
+                @if(Auth::user()->hasRole('admin'))
+                    <div class="slide-navigation-wrap">
+                        <div class="nav-item">
+                            <a href="{{ route('show_new_jobs') }}">
+                                <span class="menu-icon-wrap icon ti-check-box"></span>
+                                <span class="menu-title">Novi poslovi</span>
+                            </a>
+                        </div>
+                    </div>
+
+                <div class="slide-navigation-wrap">
+                    <div class="nav-item">
+                        <a href="{{ route('categories') }}">
+                            <span class="menu-icon-wrap icon ti-clipboard"></span>
+                            <span class="menu-title">Kategorije</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="slide-navigation-wrap">
+                    <div class="nav-item">
+                        <a href="{{ route('new_category') }}">
+                            <span class="menu-icon-wrap icon ti-pencil-alt"></span>
+                            <span class="menu-title">Dodaj kategoriju</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="slide-navigation-wrap">
+                    <div class="nav-item">
+                        <a href="{{ route('users') }}">
+                            <span class="menu-icon-wrap icon ti-clipboard"></span>
+                            <span class="menu-title">Korisnici</span>
+                        </a>
+                    </div>
+                </div>
+                @endif
+            @endauth
+
             <div class="slide-navigation-wrap">
                 <div class="nav-item">
                     <a href="{{ route('profile') }}">
