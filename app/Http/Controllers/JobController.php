@@ -11,9 +11,10 @@ use Illuminate\Support\Facades\Auth;
 class JobController extends Controller
 {
     public function index(){
-        if(!Auth::user()->hasRole('admin')) {
+
+        if(Auth::user() == null) {
             $jobs = Job::where('approved', '=', true)->get();
-        } else {
+        } elseif(Auth::user()->hasRole('admin')) {
             $jobs = Job::all();
         }
 
